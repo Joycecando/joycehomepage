@@ -23,6 +23,9 @@ export default {
             }
         },
         extend: {
+            fontFamily: {
+                'resource-han-rounded-cn': ['ResourceHanRoundedCN', 'sans-serif'],
+            },
             colors: {
                 border: 'hsl(var(--border))',
                 borderColor: {
