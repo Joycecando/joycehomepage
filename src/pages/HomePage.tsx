@@ -9,6 +9,7 @@ import { Send } from 'lucide-react';
 import { toast } from 'sonner';
 
 export default function HomePage() {
+  const [isExpanded, setIsExpanded] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
     {
       id: generateMessageId(),
@@ -107,12 +108,42 @@ export default function HomePage() {
         </div>
 
         {/* 数字分身聊天区 */}
-        <Card className="soft-shadow border-border/50 glass-effect wavy-border opacity-0 intersect:opacity-100 transition-opacity duration-700">
+        {!isExpanded ? (
+          // 圆形初始状态
+          <div className="flex justify-center opacity-0 intersect:opacity-100 transition-opacity duration-700">
+            <button
+              onClick={() => setIsExpanded(true)}
+              className="w-48 h-48 md:w-56 md:h-56 rounded-full bg-gradient-to-br from-primary to-secondary soft-shadow hover:shadow-xl hover:scale-105 transition-all duration-300 flex flex-col items-center justify-center gap-3 group"
+            >
+              <div className="text-5xl md:text-6xl group-hover:scale-110 transition-transform duration-300">
+                💬
+              </div>
+              <div className="text-lg md:text-xl font-medium text-foreground">
+                我的数字分身
+              </div>
+              <div className="text-sm text-muted-foreground">
+                点击开始对话
+              </div>
+            </button>
+          </div>
+        ) : (
+          // 展开后的聊天区
+          <Card className="soft-shadow border-border/50 glass-effect wavy-border opacity-0 intersect:opacity-100 transition-opacity duration-700 animate-in fade-in zoom-in duration-500">
           <CardHeader>
-            <CardTitle className="text-xl md:text-2xl flex items-center gap-2">
-              <span className="text-2xl">💬</span>
-              数字分身聊天区
-            </CardTitle>
+            <div className="flex items-center justify-between">
+              <CardTitle className="text-xl md:text-2xl flex items-center gap-2">
+                <span className="text-2xl">💬</span>
+                我的数字分身
+              </CardTitle>
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => setIsExpanded(false)}
+                className="text-muted-foreground hover:text-foreground"
+              >
+                收起
+              </Button>
+            </div>
             <p className="text-sm text-muted-foreground mt-2">
               有什么想了解的，尽管问我吧～
             </p>
@@ -158,6 +189,7 @@ export default function HomePage() {
             </div>
           </CardContent>
         </Card>
+        )}
 
         {/* 页脚 */}
         <div className="text-center mt-8 text-sm text-muted-foreground opacity-0 intersect:opacity-100 transition-opacity duration-700">

@@ -17,83 +17,80 @@ All colors MUST be HSL.
 @layer base {
   :root {
     --radius: 1.25rem;
-    /* 梦幻治愈配色 - 主色#D4E1F1 (210 50% 89%) - 蓝色 */
-    --background: 210 50% 96%;
-    --foreground: 210 20% 25%;
+    /* 梦幻治愈配色 - 主色#87CEEB (197 71% 73%) 天蓝色 和 #E0FFFF (180 100% 94%) 淡青色 */
+    --background: 180 100% 97%;
+    --foreground: 197 30% 25%;
     /* 卡片使用柔和的白色 */
     --card: 0 0% 100%;
-    --card-foreground: 210 20% 25%;
+    --card-foreground: 197 30% 25%;
     --popover: 0 0% 100%;
-    --popover-foreground: 210 20% 25%;
-    /* 主色 #D4E1F1 (210 50% 89%) - 蓝色 */
-    --primary: 210 50% 89%;
-    --primary-foreground: 210 20% 25%;
-    /* 辅助色1 #FFF5EE (25 100% 97%) */
-    --secondary: 25 100% 97%;
-    --secondary-foreground: 210 20% 25%;
+    --popover-foreground: 197 30% 25%;
+    /* 主色1 #87CEEB (197 71% 73%) - 天蓝色 */
+    --primary: 197 71% 73%;
+    --primary-foreground: 197 30% 25%;
+    /* 主色2 #E0FFFF (180 100% 94%) - 淡青色 */
+    --secondary: 180 100% 94%;
+    --secondary-foreground: 197 30% 25%;
+    /* 辅助色 #F0F8FF (208 100% 97%) - 爱丽丝蓝 */
+    --accent: 208 100% 97%;
+    --accent-foreground: 197 30% 25%;
     /* 柔和的蓝灰色用于muted */
-    --muted: 210 30% 95%;
-    --muted-foreground: 210 10% 50%;
-    /* 强调色使用更浅的蓝色 */
-    --accent: 210 50% 92%;
-    --accent-foreground: 210 20% 25%;
-    /* 辅助色2 #FFB6C1 (351 100% 86%) - 粉色用于点缀 */
-    --accent-pink: 351 100% 86%;
+    --muted: 197 30% 95%;
+    --muted-foreground: 197 15% 50%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
     /* 边框使用极浅的蓝色 */
-    --border: 210 40% 92%;
-    --input: 210 40% 92%;
-    --ring: 210 50% 89%;
-    --chart-1: 210 50% 89%;
-    --chart-2: 25 100% 97%;
-    --chart-3: 351 100% 86%;
+    --border: 197 40% 90%;
+    --input: 197 40% 90%;
+    --ring: 197 71% 73%;
+    --chart-1: 197 71% 73%;
+    --chart-2: 180 100% 94%;
+    --chart-3: 208 100% 97%;
     --chart-4: 160 50% 85%;
     --chart-5: 40 90% 85%;
-    --sidebar-background: 210 50% 96%;
-    --sidebar-foreground: 210 20% 25%;
-    --sidebar-primary: 210 50% 89%;
-    --sidebar-primary-foreground: 210 20% 25%;
-    --sidebar-accent: 210 50% 92%;
-    --sidebar-accent-foreground: 210 20% 25%;
-    --sidebar-border: 210 40% 92%;
-    --sidebar-ring: 210 50% 89%;
+    --sidebar-background: 180 100% 97%;
+    --sidebar-foreground: 197 30% 25%;
+    --sidebar-primary: 197 71% 73%;
+    --sidebar-primary-foreground: 197 30% 25%;
+    --sidebar-accent: 208 100% 97%;
+    --sidebar-accent-foreground: 197 30% 25%;
+    --sidebar-border: 197 40% 90%;
+    --sidebar-ring: 197 71% 73%;
   }
 
   .dark {
-    --background: 210 30% 10%;
-    --foreground: 210 50% 96%;
-    --card: 210 30% 12%;
-    --card-foreground: 210 50% 96%;
-    --popover: 210 30% 12%;
-    --popover-foreground: 210 50% 96%;
-    --primary: 210 60% 70%;
-    --primary-foreground: 210 30% 10%;
-    --secondary: 25 80% 30%;
-    --secondary-foreground: 210 50% 96%;
-    --muted: 210 30% 15%;
-    --muted-foreground: 210 30% 70%;
-    --accent: 210 50% 20%;
-    --accent-foreground: 210 50% 96%;
-    --accent-pink: 351 80% 70%;
+    --background: 197 40% 10%;
+    --foreground: 180 100% 94%;
+    --card: 197 40% 12%;
+    --card-foreground: 180 100% 94%;
+    --popover: 197 40% 12%;
+    --popover-foreground: 180 100% 94%;
+    --primary: 197 71% 60%;
+    --primary-foreground: 197 40% 10%;
+    --secondary: 180 80% 30%;
+    --secondary-foreground: 180 100% 94%;
+    --muted: 197 40% 15%;
+    --muted-foreground: 197 30% 70%;
+    --accent: 208 80% 20%;
+    --accent-foreground: 180 100% 94%;
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 50% 96%;
-    --border: 210 30% 20%;
-    --input: 210 30% 20%;
-    --ring: 210 60% 70%;
-    --chart-1: 210 60% 70%;
-    --chart-2: 25 80% 60%;
-    --chart-3: 351 80% 70%;
+    --destructive-foreground: 180 100% 94%;
+    --border: 197 40% 20%;
+    --input: 197 40% 20%;
+    --ring: 197 71% 60%;
+    --chart-1: 197 71% 60%;
+    --chart-2: 180 80% 60%;
+    --chart-3: 208 80% 60%;
     --chart-4: 160 50% 60%;
     --chart-5: 40 80% 70%;
-    --sidebar-background: 210 30% 10%;
-    --sidebar-foreground: 210 50% 96%;
-    --sidebar-primary: 210 60% 70%;
-    --sidebar-primary-foreground: 210 30% 10%;
-    --sidebar-accent: 210 50% 20%;
-    --sidebar-accent-foreground: 210 50% 96%;
-    --sidebar-border: 210 30% 20%;
-    --sidebar-ring: 210 60% 70%;
+    --sidebar-background: 197 40% 10%;
+    --sidebar-foreground: 180 100% 94%;
+    --sidebar-primary: 197 71% 60%;
+    --sidebar-primary-foreground: 197 40% 10%;
+    --sidebar-accent: 208 80% 20%;
+    --sidebar-accent-foreground: 180 100% 94%;
+    --sidebar-border: 197 40% 20%;
+    --sidebar-ring: 197 71% 60%;
   }
 }
 
@@ -110,7 +107,7 @@ All colors MUST be HSL.
 @layer utilities {
   /* 梦幻渐变效果 */
   .gradient-text {
-    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent-pink)));
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)));
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -123,7 +120,7 @@ All colors MUST be HSL.
 
   /* 柔和阴影 */
   .soft-shadow {
-    box-shadow: 0 4px 20px rgba(212, 225, 241, 0.3);
+    box-shadow: 0 4px 20px rgba(135, 206, 235, 0.25);
   }
 
   /* 浮动动画 */
@@ -160,7 +157,7 @@ All colors MUST be HSL.
     inset: -2px;
     border-radius: 1.25rem;
     padding: 2px;
-    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent-pink)));
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)));
     -webkit-mask: 
       linear-gradient(#fff 0 0) content-box, 
       linear-gradient(#fff 0 0);
