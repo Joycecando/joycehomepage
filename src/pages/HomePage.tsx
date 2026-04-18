@@ -107,7 +107,7 @@ export default function HomePage() {
         </div>
 
         {/* 数字分身聊天区 */}
-        <Card className="soft-shadow border-border/50 glass-effect opacity-0 intersect:opacity-100 transition-opacity duration-700">
+        <Card className="soft-shadow border-border/50 glass-effect wavy-border opacity-0 intersect:opacity-100 transition-opacity duration-700">
           <CardHeader>
             <CardTitle className="text-xl md:text-2xl flex items-center gap-2">
               <span className="text-2xl">💬</span>

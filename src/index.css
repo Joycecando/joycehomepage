@@ -17,80 +17,83 @@ All colors MUST be HSL.
 @layer base {
   :root {
     --radius: 1.25rem;
-    /* 梦幻治愈配色 - 主色#FFF5EE (350 100% 97%) */
-    --background: 350 100% 97%;
-    --foreground: 340 15% 25%;
+    /* 梦幻治愈配色 - 主色#D4E1F1 (210 50% 89%) - 蓝色 */
+    --background: 210 50% 96%;
+    --foreground: 210 20% 25%;
     /* 卡片使用柔和的白色 */
     --card: 0 0% 100%;
-    --card-foreground: 340 15% 25%;
+    --card-foreground: 210 20% 25%;
     --popover: 0 0% 100%;
-    --popover-foreground: 340 15% 25%;
-    /* 辅助色1 #FFB6C1 (351 100% 86%) - 粉色 */
-    --primary: 351 100% 86%;
-    --primary-foreground: 340 15% 25%;
-    /* 辅助色2 #D4E1F1 (210 50% 89%) - 蓝色 */
-    --secondary: 210 50% 89%;
-    --secondary-foreground: 340 15% 25%;
-    /* 柔和的灰色用于muted */
-    --muted: 350 30% 95%;
-    --muted-foreground: 340 10% 50%;
-    /* 强调色使用更浅的粉色 */
-    --accent: 351 100% 92%;
-    --accent-foreground: 340 15% 25%;
+    --popover-foreground: 210 20% 25%;
+    /* 主色 #D4E1F1 (210 50% 89%) - 蓝色 */
+    --primary: 210 50% 89%;
+    --primary-foreground: 210 20% 25%;
+    /* 辅助色1 #FFF5EE (25 100% 97%) */
+    --secondary: 25 100% 97%;
+    --secondary-foreground: 210 20% 25%;
+    /* 柔和的蓝灰色用于muted */
+    --muted: 210 30% 95%;
+    --muted-foreground: 210 10% 50%;
+    /* 强调色使用更浅的蓝色 */
+    --accent: 210 50% 92%;
+    --accent-foreground: 210 20% 25%;
+    /* 辅助色2 #FFB6C1 (351 100% 86%) - 粉色用于点缀 */
+    --accent-pink: 351 100% 86%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
-    /* 边框使用极浅的粉色 */
-    --border: 350 40% 92%;
-    --input: 350 40% 92%;
-    --ring: 351 100% 86%;
-    --chart-1: 351 100% 86%;
-    --chart-2: 210 50% 89%;
-    --chart-3: 280 60% 85%;
+    /* 边框使用极浅的蓝色 */
+    --border: 210 40% 92%;
+    --input: 210 40% 92%;
+    --ring: 210 50% 89%;
+    --chart-1: 210 50% 89%;
+    --chart-2: 25 100% 97%;
+    --chart-3: 351 100% 86%;
     --chart-4: 160 50% 85%;
     --chart-5: 40 90% 85%;
-    --sidebar-background: 350 100% 97%;
-    --sidebar-foreground: 340 15% 25%;
-    --sidebar-primary: 351 100% 86%;
-    --sidebar-primary-foreground: 340 15% 25%;
-    --sidebar-accent: 351 100% 92%;
-    --sidebar-accent-foreground: 340 15% 25%;
-    --sidebar-border: 350 40% 92%;
-    --sidebar-ring: 351 100% 86%;
+    --sidebar-background: 210 50% 96%;
+    --sidebar-foreground: 210 20% 25%;
+    --sidebar-primary: 210 50% 89%;
+    --sidebar-primary-foreground: 210 20% 25%;
+    --sidebar-accent: 210 50% 92%;
+    --sidebar-accent-foreground: 210 20% 25%;
+    --sidebar-border: 210 40% 92%;
+    --sidebar-ring: 210 50% 89%;
   }
 
   .dark {
-    --background: 340 20% 10%;
-    --foreground: 350 100% 97%;
-    --card: 340 20% 12%;
-    --card-foreground: 350 100% 97%;
-    --popover: 340 20% 12%;
-    --popover-foreground: 350 100% 97%;
-    --primary: 351 80% 70%;
-    --primary-foreground: 340 20% 10%;
-    --secondary: 210 40% 30%;
-    --secondary-foreground: 350 100% 97%;
-    --muted: 340 20% 15%;
-    --muted-foreground: 350 30% 70%;
-    --accent: 351 60% 20%;
-    --accent-foreground: 350 100% 97%;
+    --background: 210 30% 10%;
+    --foreground: 210 50% 96%;
+    --card: 210 30% 12%;
+    --card-foreground: 210 50% 96%;
+    --popover: 210 30% 12%;
+    --popover-foreground: 210 50% 96%;
+    --primary: 210 60% 70%;
+    --primary-foreground: 210 30% 10%;
+    --secondary: 25 80% 30%;
+    --secondary-foreground: 210 50% 96%;
+    --muted: 210 30% 15%;
+    --muted-foreground: 210 30% 70%;
+    --accent: 210 50% 20%;
+    --accent-foreground: 210 50% 96%;
+    --accent-pink: 351 80% 70%;
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 350 100% 97%;
-    --border: 340 20% 20%;
-    --input: 340 20% 20%;
-    --ring: 351 80% 70%;
-    --chart-1: 351 80% 70%;
-    --chart-2: 210 60% 60%;
-    --chart-3: 280 60% 65%;
+    --destructive-foreground: 210 50% 96%;
+    --border: 210 30% 20%;
+    --input: 210 30% 20%;
+    --ring: 210 60% 70%;
+    --chart-1: 210 60% 70%;
+    --chart-2: 25 80% 60%;
+    --chart-3: 351 80% 70%;
     --chart-4: 160 50% 60%;
     --chart-5: 40 80% 70%;
-    --sidebar-background: 340 20% 10%;
-    --sidebar-foreground: 350 100% 97%;
-    --sidebar-primary: 351 80% 70%;
-    --sidebar-primary-foreground: 340 20% 10%;
-    --sidebar-accent: 351 60% 20%;
-    --sidebar-accent-foreground: 350 100% 97%;
-    --sidebar-border: 340 20% 20%;
-    --sidebar-ring: 351 80% 70%;
+    --sidebar-background: 210 30% 10%;
+    --sidebar-foreground: 210 50% 96%;
+    --sidebar-primary: 210 60% 70%;
+    --sidebar-primary-foreground: 210 30% 10%;
+    --sidebar-accent: 210 50% 20%;
+    --sidebar-accent-foreground: 210 50% 96%;
+    --sidebar-border: 210 30% 20%;
+    --sidebar-ring: 210 60% 70%;
   }
 }
 
@@ -107,7 +110,7 @@ All colors MUST be HSL.
 @layer utilities {
   /* 梦幻渐变效果 */
   .gradient-text {
-    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)));
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent-pink)));
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -120,7 +123,7 @@ All colors MUST be HSL.
 
   /* 柔和阴影 */
   .soft-shadow {
-    box-shadow: 0 4px 20px rgba(255, 182, 193, 0.15);
+    box-shadow: 0 4px 20px rgba(212, 225, 241, 0.3);
   }
 
   /* 浮动动画 */
@@ -142,5 +145,27 @@ All colors MUST be HSL.
     background: rgba(255, 255, 255, 0.7);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
+  }
+
+  /* 波浪形边框效果 */
+  .wavy-border {
+    position: relative;
+    border: none;
+    overflow: visible;
+  }
+
+  .wavy-border::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: 1.25rem;
+    padding: 2px;
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent-pink)));
+    -webkit-mask: 
+      linear-gradient(#fff 0 0) content-box, 
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    z-index: -1;
   }
 }
