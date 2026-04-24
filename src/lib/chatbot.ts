@@ -1,4 +1,4 @@
-// 数字分身聊天机器人逻辑
+// Digital Me聊天机器人逻辑
 
 export interface Message {
   id: string;

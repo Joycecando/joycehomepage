@@ -13,7 +13,7 @@ export default function HomePage() {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: generateMessageId(),
-      content: '你好呀！我是李瞳的数字分身。很高兴认识你！你可以问我关于李瞳的任何问题～ 😊',
+      content: '你好！我是Digital World的李瞳。很高兴认识你！你可以问我你好奇的问题~😊',
       isUser: false,
       timestamp: new Date(),
     },
@@ -102,94 +102,99 @@ export default function HomePage() {
           </p>
         </div>
 
-        {/* 个人信息区 */}
-        <div className="mb-8 md:mb-12 opacity-0 intersect:opacity-100 transition-opacity duration-700">
-          <PersonalInfo />
-        </div>
-
-        {/* 数字分身聊天区 */}
-        {!isExpanded ? (
-          // 圆形初始状态
-          <div className="flex justify-center opacity-0 intersect:opacity-100 transition-opacity duration-700">
-            <button
-              onClick={() => setIsExpanded(true)}
-              className="w-48 h-48 md:w-56 md:h-56 rounded-full bg-gradient-to-br from-primary to-secondary soft-shadow hover:shadow-xl hover:scale-105 transition-all duration-300 flex flex-col items-center justify-center gap-3 group"
-            >
-              <div className="text-5xl md:text-6xl group-hover:scale-110 transition-transform duration-300">
-                💬
-              </div>
-              <div className="text-lg md:text-xl font-medium text-foreground">
-                我的数字分身
-              </div>
-              <div className="text-sm text-muted-foreground">
-                点击开始对话
-              </div>
-            </button>
+        {/* 双栏布局 */}
+        <div className="flex flex-col md:flex-row gap-8 md:gap-12">
+          {/* 左侧 30% - 个人信息区 */}
+          <div className="w-full md:w-3/10 opacity-0 intersect:opacity-100 transition-opacity duration-700">
+            <PersonalInfo />
           </div>
-        ) : (
-          // 展开后的聊天区
-          <Card className="soft-shadow border-border/50 glass-effect wavy-border opacity-0 intersect:opacity-100 transition-opacity duration-700 animate-in fade-in zoom-in duration-500">
-          <CardHeader>
-            <div className="flex items-center justify-between">
-              <CardTitle className="text-xl md:text-2xl flex items-center gap-2">
-                <span className="text-2xl">💬</span>
-                我的数字分身
-              </CardTitle>
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => setIsExpanded(false)}
-                className="text-muted-foreground hover:text-foreground"
-              >
-                收起
-              </Button>
-            </div>
-            <p className="text-sm text-muted-foreground mt-2">
-              有什么想了解的，尽管问我吧～
-            </p>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            {/* 聊天消息区 */}
-            <div className="h-[400px] md:h-[500px] overflow-y-auto px-2 md:px-4 py-4 rounded-lg bg-muted/30">
-              {messages.map(message => (
-                <ChatMessage key={message.id} message={message} />
-              ))}
-              {isTyping && (
-                <div className="flex justify-start mb-4">
-                  <div className="bg-card text-card-foreground rounded-2xl px-4 py-3 soft-shadow">
-                    <div className="flex gap-1">
-                      <span className="w-2 h-2 bg-primary rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
-                      <span className="w-2 h-2 bg-primary rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
-                      <span className="w-2 h-2 bg-primary rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
-                    </div>
-                  </div>
-                </div>
-              )}
-              <div ref={messagesEndRef} />
-            </div>
 
-            {/* 输入区 */}
-            <div className="flex gap-2">
-              <Textarea
-                value={inputValue}
-                onChange={e => setInputValue(e.target.value)}
-                onKeyDown={handleKeyDown}
-                placeholder="输入你的问题... (按 Enter 发送，Shift+Enter 换行)"
-                className="min-h-[60px] max-h-[120px] resize-none"
-                disabled={isTyping}
-              />
-              <Button
-                onClick={handleSend}
-                disabled={isTyping || !inputValue.trim()}
-                size="icon"
-                className="h-[60px] w-[60px] shrink-0"
-              >
-                <Send className="h-5 w-5" />
-              </Button>
-            </div>
-          </CardContent>
-        </Card>
-        )}
+          {/* 右侧 70% - Digital Me聊天区 */}
+          <div className="w-full md:w-7/10">
+            {!isExpanded ? (
+              // 圆形初始状态
+              <div className="flex justify-center opacity-0 intersect:opacity-100 transition-opacity duration-700">
+                <button
+                  onClick={() => setIsExpanded(true)}
+                  className="w-48 h-48 md:w-56 md:h-56 rounded-full bg-gradient-to-br from-primary to-secondary soft-shadow hover:shadow-xl hover:scale-105 transition-all duration-300 flex flex-col items-center justify-center gap-3 group"
+                >
+                  <div className="text-5xl md:text-6xl group-hover:scale-110 transition-transform duration-300">
+                    💬
+                  </div>
+                  <div className="text-lg md:text-xl font-medium text-foreground">
+                    Digital Me 聊天区
+                  </div>
+                  <div className="text-sm text-muted-foreground">
+                    点击开始对话
+                  </div>
+                </button>
+              </div>
+            ) : (
+              // 展开后的聊天区
+              <Card className="soft-shadow border-border/50 glass-effect wavy-border opacity-0 intersect:opacity-100 transition-opacity duration-700 animate-in fade-in zoom-in duration-500">
+              <CardHeader>
+                <div className="flex items-center justify-between">
+                  <CardTitle className="text-xl md:text-2xl flex items-center gap-2">
+                    <span className="text-2xl">💬</span>
+                    Digital Me
+                  </CardTitle>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => setIsExpanded(false)}
+                    className="text-muted-foreground hover:text-foreground"
+                  >
+                    收起
+                  </Button>
+                </div>
+                <p className="text-sm text-muted-foreground mt-2">
+                  有什么想了解的，尽管问我吧～
+                </p>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {/* 聊天消息区 */}
+                <div className="h-[400px] md:h-[500px] overflow-y-auto px-2 md:px-4 py-4 rounded-lg bg-muted/30">
+                  {messages.map(message => (
+                    <ChatMessage key={message.id} message={message} />
+                  ))}
+                  {isTyping && (
+                    <div className="flex justify-start mb-4">
+                      <div className="bg-card text-card-foreground rounded-2xl px-4 py-3 soft-shadow">
+                        <div className="flex gap-1">
+                          <span className="w-2 h-2 bg-primary rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
+                          <span className="w-2 h-2 bg-primary rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
+                          <span className="w-2 h-2 bg-primary rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                  <div ref={messagesEndRef} />
+                </div>
+
+                {/* 输入区 */}
+                <div className="flex gap-2">
+                  <Textarea
+                    value={inputValue}
+                    onChange={e => setInputValue(e.target.value)}
+                    onKeyDown={handleKeyDown}
+                    placeholder="输入你的问题... (按 Enter 发送，Shift+Enter 换行)"
+                    className="min-h-[60px] max-h-[120px] resize-none"
+                    disabled={isTyping}
+                  />
+                  <Button
+                    onClick={handleSend}
+                    disabled={isTyping || !inputValue.trim()}
+                    size="icon"
+                    className="h-[60px] w-[60px] shrink-0"
+                  >
+                    <Send className="h-5 w-5" />
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+            )}
+          </div>
+        </div>
 
         {/* 页脚 */}
         <div className="text-center mt-8 text-sm text-muted-foreground opacity-0 intersect:opacity-100 transition-opacity duration-700">
