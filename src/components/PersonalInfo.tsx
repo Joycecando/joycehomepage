@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 interface Section {
   title: string;
+  color: string;
   items: {
     label: string;
     content: string;
@@ -21,6 +22,7 @@ export function PersonalInfo() {
   const sections: Section[] = [
     {
       title: '关于我・初见',
+      color: '#B1ABC7',
       items: [
         { label: '姓名', content: '李瞳' },
         { label: '个人标语', content: 'A girl born to perceive the universe---welcome to my world' },
@@ -33,6 +35,7 @@ export function PersonalInfo() {
     },
     {
       title: '履历・荣誉与实践',
+      color: '#F5C982',
       items: [
         {
           label: '奖项荣誉',
@@ -50,6 +53,7 @@ export function PersonalInfo() {
     },
     {
       title: '能力・技能与深耕方向',
+      color: '#EFC0BA',
       items: [
         { label: '语言能力', content: '普通话/英语/粤语/客家话/日语' },
         { label: '擅长领域', content: '语言文字表达/中英思辨/社会思考/组织控场' },
@@ -58,6 +62,7 @@ export function PersonalInfo() {
     },
     {
       title: '内核・自我认知与三观',
+      color: '#DCDDBB',
       items: [
         { label: '整体自我认知', content: '感性且理智，渺小且宏大。' },
         {
@@ -77,6 +82,7 @@ export function PersonalInfo() {
     },
     {
       title: '日常・生活与趣味偏爱',
+      color: '#8A9DC6',
       items: [
         { label: '人格标签', content: 'MBTI：INTJ｜星座：水瓶座' },
         {
@@ -95,6 +101,7 @@ export function PersonalInfo() {
     },
     {
       title: '前路・成长与未来探索',
+      color: '#BFCAE6',
       items: [
         { label: '短期目标', content: '完成个人网站搭建、开发轻量化AI小产品（Vibe coding）' },
         { label: '探索方向', content: '英文小说原创写作、AI深度融合应用' },
@@ -106,6 +113,7 @@ export function PersonalInfo() {
     },
     {
       title: '尾记・关于本站',
+      color: '#FCE3DD',
       items: [
         { label: '建站初衷', content: '留存电子世界专属痕迹，练习Vibe Coding实操，以文字与页面，让他人完整认识我。' },
         { label: '更新说明', content: '课业繁忙，网站更新时间不固定。' },
@@ -115,35 +123,49 @@ export function PersonalInfo() {
   ];
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-6">
       {sections.map((section, sectionIndex) => {
         const sectionId = `section-${sectionIndex}`;
         const isExpanded = expandedSections[sectionId] || false;
 
         return (
-          <div key={sectionId} className="opacity-0 intersect:opacity-100 transition-opacity duration-700">
+          <div 
+            key={sectionId} 
+            className="opacity-0 intersect:opacity-100 transition-opacity duration-700"
+            style={{ 
+              backgroundColor: section.color,
+              borderRadius: '16px',
+              overflow: 'hidden',
+              boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
+            }}
+          >
             {/* 一级标题 */}
-            <h2 
-              className="text-2xl font-bold text-foreground cursor-pointer hover:text-primary transition-colors"
+            <div 
+              className="p-4 cursor-pointer hover:opacity-90 transition-opacity"
               onClick={() => toggleSection(sectionId)}
+              style={{ 
+                borderBottom: isExpanded ? '1px solid rgba(0, 0, 0, 0.1)' : 'none'
+              }}
             >
-              {section.title}
-            </h2>
+              <h2 className="text-xl font-bold text-foreground">
+                {section.title}
+              </h2>
+            </div>
             
             {/* 二级内容 */}
             {isExpanded && (
-              <div className="mt-4 space-y-4">
+              <div className="p-4 space-y-4">
                 {section.items.map((item, itemIndex) => (
                   <div key={`${sectionId}-item-${itemIndex}`}>
                     {/* 二级标题 */}
-                    <h3 className="text-lg font-medium text-foreground mb-2 cursor-pointer hover:text-primary transition-colors">
+                    <h3 className="text-lg font-medium text-foreground mb-2">
                       {item.label}
                     </h3>
                     {/* 内容 */}
-                    <div className="pl-6 space-y-2">
+                    <div className="pl-4 space-y-2">
                       {item.content.split('\n').map((line, lineIndex) => (
                         <p key={`${sectionId}-item-${itemIndex}-line-${lineIndex}`} className="text-base text-foreground leading-relaxed">
-                          &gt; {line}
+                          {line}
                         </p>
                       ))}
                     </div>

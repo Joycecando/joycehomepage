@@ -76,62 +76,65 @@ export default function HomePage() {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen" style={{ 
+      background: 'linear-gradient(to bottom, #FBE9E7 0%, #FFCCBC 50%, #FFF176 100%)',
+      minHeight: '100vh',
+      backgroundAttachment: 'fixed'
+    }}>
       {/* 主容器 */}
-      <div className="container mx-auto px-6 md:px-12 py-8 md:py-12 max-w-[1440px]">
-        {/* 头像和介绍区 */}
-        <div className="text-center mb-8 md:mb-12">
-          {/* 头像 */}
-          <div className="flex justify-center mb-6 opacity-0 intersect:opacity-100 transition-opacity duration-700">
-            <div className="relative">
-              <img
-                src="https://miaoda-conversation-file.cdn.bcebos.com/user-b1lj719um0w0/conv-b1nr6f33ft34/20260418/file-b1nw4vfq6gow.jpg"
-                alt="李瞳头像"
-                className="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover soft-shadow animate-float"
-              />
-              <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/20 to-secondary/20 blur-xl -z-10" />
+      <div className="container mx-auto px-6 md:px-12 py-8 md:py-12 max-w-[1440px] flex flex-col md:flex-row gap-8">
+        {/* 左侧功能栏 */}
+        <div className="w-full md:w-[33.333%] bg-white/30 backdrop-blur-lg rounded-2xl p-6 shadow-lg overflow-y-auto" style={{ height: 'calc(100vh - 4rem)' }}>
+          {/* 头像和介绍区 */}
+          <div className="text-center mb-8">
+            {/* 头像 */}
+            <div className="flex justify-center mb-6 opacity-0 intersect:opacity-100 transition-opacity duration-700">
+              <div className="relative">
+                <img
+                  src="https://miaoda-conversation-file.cdn.bcebos.com/user-b1lj719um0w0/conv-b1nr6f33ft34/20260418/file-b1nw4vfq6gow.jpg"
+                  alt="李瞳头像"
+                  className="w-24 h-24 rounded-full object-cover soft-shadow animate-float"
+                />
+                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/20 to-secondary/20 blur-xl -z-10" />
+              </div>
             </div>
+
+            {/* 名字和介绍 */}
+            <h1 className="text-2xl font-bold mb-2 gradient-text opacity-0 intersect:opacity-100 transition-opacity duration-700">
+              李瞳 (Joycelyn Lee)
+            </h1>
+            <p className="text-sm text-muted-foreground italic opacity-0 intersect:opacity-100 transition-opacity duration-700">
+              A girl born to perceive the universe---welcome to my world
+            </p>
           </div>
 
-          {/* 名字和介绍 */}
-          <h1 className="text-3xl md:text-4xl font-bold mb-3 gradient-text opacity-0 intersect:opacity-100 transition-opacity duration-700">
-            李瞳 (Joycelyn Lee)
-          </h1>
-          <p className="text-base md:text-lg text-muted-foreground italic opacity-0 intersect:opacity-100 transition-opacity duration-700">
-            A girl born to perceive the universe---welcome to my world
-          </p>
+          {/* 个人信息区 */}
+          <PersonalInfo />
         </div>
 
-        {/* 双栏布局 */}
-        <div className="flex flex-col md:flex-row gap-8 md:gap-12">
-          {/* 左侧 30% - 个人信息区 */}
-          <div className="w-full md:w-3/10 opacity-0 intersect:opacity-100 transition-opacity duration-700">
-            <PersonalInfo />
-          </div>
-
-          {/* 右侧 70% - Digital Me聊天区 */}
-          <div className="w-full md:w-7/10">
-            {!isExpanded ? (
-              // 圆形初始状态
-              <div className="flex justify-center opacity-0 intersect:opacity-100 transition-opacity duration-700">
-                <button
-                  onClick={() => setIsExpanded(true)}
-                  className="w-48 h-48 md:w-56 md:h-56 rounded-full bg-gradient-to-br from-primary to-secondary soft-shadow hover:shadow-xl hover:scale-105 transition-all duration-300 flex flex-col items-center justify-center gap-3 group"
-                >
-                  <div className="text-5xl md:text-6xl group-hover:scale-110 transition-transform duration-300">
-                    💬
-                  </div>
-                  <div className="text-lg md:text-xl font-medium text-foreground">
-                    Digital Me 聊天区
-                  </div>
-                  <div className="text-sm text-muted-foreground">
-                    点击开始对话
-                  </div>
-                </button>
-              </div>
-            ) : (
-              // 展开后的聊天区
-              <Card className="soft-shadow border-border/50 glass-effect wavy-border opacity-0 intersect:opacity-100 transition-opacity duration-700 animate-in fade-in zoom-in duration-500">
+        {/* 右侧空白/内容区 */}
+        <div className="w-full md:w-3/4 flex items-center justify-center">
+          {!isExpanded ? (
+            // 圆形初始状态
+            <div className="flex justify-center opacity-0 intersect:opacity-100 transition-opacity duration-700">
+              <button
+                onClick={() => setIsExpanded(true)}
+                className="w-48 h-48 md:w-56 md:h-56 rounded-full bg-gradient-to-br from-primary to-secondary soft-shadow hover:shadow-xl hover:scale-105 transition-all duration-300 flex flex-col items-center justify-center gap-3 group"
+              >
+                <div className="text-5xl md:text-6xl group-hover:scale-110 transition-transform duration-300">
+                  💬
+                </div>
+                <div className="text-lg md:text-xl font-medium text-foreground">
+                  Digital Me 聊天区
+                </div>
+                <div className="text-sm text-muted-foreground">
+                  点击开始对话
+                </div>
+              </button>
+            </div>
+          ) : (
+            // 展开后的聊天区
+            <Card className="soft-shadow border-border/50 glass-effect wavy-border opacity-0 intersect:opacity-100 transition-opacity duration-700 animate-in fade-in zoom-in duration-500 w-full max-w-2xl">
               <CardHeader>
                 <div className="flex items-center justify-between">
                   <CardTitle className="text-xl md:text-2xl flex items-center gap-2">
@@ -193,11 +196,10 @@ export default function HomePage() {
               </CardContent>
             </Card>
             )}
-          </div>
         </div>
 
         {/* 页脚 */}
-        <div className="text-center mt-8 text-sm text-muted-foreground opacity-0 intersect:opacity-100 transition-opacity duration-700">
+        <div className="text-center mt-8 text-sm text-muted-foreground opacity-0 intersect:opacity-100 transition-opacity duration-700 md:col-span-2">
           <p>© 2026 李瞳 (Joycelyn Lee) · 用心感知世界 ✨</p>
         </div>
       </div>
