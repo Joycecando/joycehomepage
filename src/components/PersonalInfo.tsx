@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 
 interface Section {
   title: string;
-  color: string;
   items: {
     label: string;
     content: string;
@@ -10,19 +9,34 @@ interface Section {
 }
 
 export function PersonalInfo() {
-  const [expandedSections, setExpandedSections] = useState<{[key: string]: boolean}>({});
+  const [expandedSections, setExpandedSections] = useState<Record<string, boolean>>({});
+  const [togglingSections, setTogglingSections] = useState<Record<string, boolean>>({});
 
   const toggleSection = (sectionId: string) => {
+    // 标记正在切换的部分
+    setTogglingSections(prev => ({
+      ...prev,
+      [sectionId]: true
+    }));
+    
+    // 切换展开状态
     setExpandedSections(prev => ({
       ...prev,
       [sectionId]: !prev[sectionId]
     }));
+    
+    // 300ms后清除切换标记
+    setTimeout(() => {
+      setTogglingSections(prev => ({
+        ...prev,
+        [sectionId]: false
+      }));
+    }, 300);
   };
 
   const sections: Section[] = [
     {
       title: '关于我・初见',
-      color: '#B1ABC7',
       items: [
         { label: '姓名', content: '李瞳' },
         { label: '个人标语', content: 'A girl born to perceive the universe---welcome to my world' },
@@ -35,7 +49,6 @@ export function PersonalInfo() {
     },
     {
       title: '履历・荣誉与实践',
-      color: '#F5C982',
       items: [
         {
           label: '奖项荣誉',
@@ -53,7 +66,6 @@ export function PersonalInfo() {
     },
     {
       title: '能力・技能与深耕方向',
-      color: '#EFC0BA',
       items: [
         { label: '语言能力', content: '普通话/英语/粤语/客家话/日语' },
         { label: '擅长领域', content: '语言文字表达/中英思辨/社会思考/组织控场' },
@@ -62,7 +74,6 @@ export function PersonalInfo() {
     },
     {
       title: '内核・自我认知与三观',
-      color: '#DCDDBB',
       items: [
         { label: '整体自我认知', content: '感性且理智，渺小且宏大。' },
         {
@@ -82,7 +93,6 @@ export function PersonalInfo() {
     },
     {
       title: '日常・生活与趣味偏爱',
-      color: '#8A9DC6',
       items: [
         { label: '人格标签', content: 'MBTI：INTJ｜星座：水瓶座' },
         {
@@ -101,7 +111,6 @@ export function PersonalInfo() {
     },
     {
       title: '前路・成长与未来探索',
-      color: '#BFCAE6',
       items: [
         { label: '短期目标', content: '完成个人网站搭建、开发轻量化AI小产品（Vibe coding）' },
         { label: '探索方向', content: '英文小说原创写作、AI深度融合应用' },
@@ -113,7 +122,6 @@ export function PersonalInfo() {
     },
     {
       title: '尾记・关于本站',
-      color: '#FCE3DD',
       items: [
         { label: '建站初衷', content: '留存电子世界专属痕迹，练习Vibe Coding实操，以文字与页面，让他人完整认识我。' },
         { label: '更新说明', content: '课业繁忙，网站更新时间不固定。' },
@@ -133,38 +141,101 @@ export function PersonalInfo() {
             key={sectionId} 
             className="opacity-0 intersect:opacity-100 transition-opacity duration-700"
             style={{ 
-              backgroundColor: section.color,
-              borderRadius: '16px',
+              backgroundColor: 'rgba(255, 255, 255, 0.1)',
+              borderRadius: '20px',
               overflow: 'hidden',
-              boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
+              boxShadow: '0 8px 32px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04)',
+              backdropFilter: 'blur(24px)',
+              WebkitBackdropFilter: 'blur(24px)',
+              border: '1px solid rgba(255, 255, 255, 0.4)',
+              position: 'relative',
+              transform: togglingSections[sectionId] ? 'translateY(3px)' : 'translateY(0)',
+              transition: togglingSections[sectionId] ? 'transform 300ms cubic-bezier(0.34, 1.56, 0.64, 1)' : 'transform 180ms cubic-bezier(0.34, 1.56, 0.64, 1)'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = 'scale(1.03)';
+              e.currentTarget.style.transition = 'transform 180ms cubic-bezier(0.34, 1.56, 0.64, 1)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = 'scale(1)';
+              e.currentTarget.style.transition = 'transform 180ms cubic-bezier(0.34, 1.56, 0.64, 1)';
             }}
           >
+            {/* 顶部边缘高光 */}
+            <div 
+              style={{
+                position: 'absolute',
+                top: '0',
+                left: '0',
+                right: '0',
+                height: '1px',
+                background: 'linear-gradient(90deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.6))',
+                borderRadius: '20px 20px 0 0'
+              }}
+            />
+            {/* 底部边缘高光 */}
+            <div 
+              style={{
+                position: 'absolute',
+                bottom: '0',
+                left: '0',
+                right: '0',
+                height: '1px',
+                background: 'linear-gradient(90deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.3))',
+                borderRadius: '0 0 20px 20px'
+              }}
+            />
+            {/* 左侧边缘高光 */}
+            <div 
+              style={{
+                position: 'absolute',
+                top: '10%',
+                bottom: '10%',
+                left: '0',
+                width: '1px',
+                background: 'linear-gradient(180deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.4))',
+                borderRadius: '20px 0 0 20px'
+              }}
+            />
+            {/* 右侧边缘高光 */}
+            <div 
+              style={{
+                position: 'absolute',
+                top: '10%',
+                bottom: '10%',
+                right: '0',
+                width: '1px',
+                background: 'linear-gradient(180deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.4))',
+                borderRadius: '0 20px 20px 0'
+              }}
+            />
+            
             {/* 一级标题 */}
             <div 
-              className="p-4 cursor-pointer hover:opacity-90 transition-opacity"
+              className="p-5 cursor-pointer hover:opacity-90 transition-opacity"
               onClick={() => toggleSection(sectionId)}
               style={{ 
-                borderBottom: isExpanded ? '1px solid rgba(0, 0, 0, 0.1)' : 'none'
+                borderBottom: isExpanded ? '1px solid rgba(255, 255, 255, 0.2)' : 'none'
               }}
             >
-              <h2 className="text-xl font-bold text-foreground">
+              <h2 className="text-xl font-bold text-gray-800">
                 {section.title}
               </h2>
             </div>
             
             {/* 二级内容 */}
             {isExpanded && (
-              <div className="p-4 space-y-4">
+              <div className="p-5 space-y-4 animate-in fade-in slide-in-from-top duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)]">
                 {section.items.map((item, itemIndex) => (
-                  <div key={`${sectionId}-item-${itemIndex}`}>
+                  <div key={`${sectionId}-item-${itemIndex}`} className="animate-in fade-in slide-in-from-top duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)]" style={{ animationDelay: `${itemIndex * 50}ms` }}>
                     {/* 二级标题 */}
-                    <h3 className="text-lg font-medium text-foreground mb-2">
+                    <h3 className="text-lg font-medium text-gray-800 mb-2">
                       {item.label}
                     </h3>
                     {/* 内容 */}
                     <div className="pl-4 space-y-2">
                       {item.content.split('\n').map((line, lineIndex) => (
-                        <p key={`${sectionId}-item-${itemIndex}-line-${lineIndex}`} className="text-base text-foreground leading-relaxed">
+                        <p key={`${sectionId}-item-${itemIndex}-line-${lineIndex}`} className="text-base text-gray-700 leading-relaxed">
                           {line}
                         </p>
                       ))}

@@ -100,7 +100,7 @@ export default function HomePage() {
             </div>
 
             {/* 名字和介绍 */}
-            <h1 className="text-2xl font-bold mb-2 gradient-text opacity-0 intersect:opacity-100 transition-opacity duration-700">
+            <h1 className="text-2xl font-bold mb-2 text-gray-800 opacity-0 intersect:opacity-100 transition-opacity duration-700">
               李瞳 (Joycelyn Lee)
             </h1>
             <p className="text-sm text-muted-foreground italic opacity-0 intersect:opacity-100 transition-opacity duration-700">
@@ -118,23 +118,91 @@ export default function HomePage() {
             // 圆形初始状态
             <div className="flex justify-center opacity-0 intersect:opacity-100 transition-opacity duration-700">
               <button
-                onClick={() => setIsExpanded(true)}
-                className="w-48 h-48 md:w-56 md:h-56 rounded-full bg-gradient-to-br from-primary to-secondary soft-shadow hover:shadow-xl hover:scale-105 transition-all duration-300 flex flex-col items-center justify-center gap-3 group"
-              >
-                <div className="text-5xl md:text-6xl group-hover:scale-110 transition-transform duration-300">
-                  💬
-                </div>
-                <div className="text-lg md:text-xl font-medium text-foreground">
-                  Digital Me 聊天区
-                </div>
-                <div className="text-sm text-muted-foreground">
-                  点击开始对话
-                </div>
-              </button>
+                  onClick={() => setIsExpanded(true)}
+                  className="w-48 h-48 md:w-56 md:h-56 rounded-full hover:scale-[1.02] flex flex-col items-center justify-center gap-3 group"
+                  style={{
+                    backgroundColor: 'rgba(255, 255, 255, 0.25)',
+                    backdropFilter: 'blur(20px)',
+                    WebkitBackdropFilter: 'blur(20px)',
+                    border: '1px solid rgba(255, 255, 255, 0.35)',
+                    boxShadow: '0 4px 16px rgba(0, 0, 0, 0.08)',
+                    position: 'relative',
+                    overflow: 'hidden',
+                    transition: 'transform 300ms cubic-bezier(0.34, 1.56, 0.64, 1)'
+                  }}
+                >
+                  {/* 边缘高光效果 */}
+                  <div 
+                    style={{
+                      position: 'absolute',
+                      top: '0',
+                      left: '0',
+                      right: '0',
+                      bottom: '0',
+                      borderRadius: '50%',
+                      background: 'linear-gradient(135deg, rgba(255, 182, 193, 0.3) 0%, rgba(255, 218, 185, 0.3) 50%, rgba(176, 224, 230, 0.3) 100%)',
+                      zIndex: '-1'
+                    }}
+                  />
+                  {/* 顶部边缘高光 */}
+                  <div 
+                    style={{
+                      position: 'absolute',
+                      top: '-1px',
+                      left: '10%',
+                      right: '10%',
+                      height: '1px',
+                      background: 'linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent)',
+                      borderRadius: '50%'
+                    }}
+                  />
+                  <div className="text-5xl md:text-6xl group-hover:scale-110 transition-transform duration-300">
+                    💬
+                  </div>
+                  <div className="text-lg md:text-xl font-medium text-gray-800">
+                    Digital Me 聊天区
+                  </div>
+                  <div className="text-sm text-gray-700">
+                    点击开始对话
+                  </div>
+                </button>
             </div>
           ) : (
             // 展开后的聊天区
-            <Card className="soft-shadow border-border/50 glass-effect wavy-border opacity-0 intersect:opacity-100 transition-opacity duration-700 animate-in fade-in zoom-in duration-500 w-full max-w-2xl">
+            <div className="opacity-0 intersect:opacity-100 transition-opacity duration-700 w-full max-w-2xl rounded-2xl overflow-hidden" style={{ 
+              backgroundColor: 'rgba(255, 255, 255, 0.25)',
+              backdropFilter: 'blur(20px)',
+              WebkitBackdropFilter: 'blur(20px)',
+              border: '1px solid rgba(255, 255, 255, 0.35)',
+              boxShadow: '0 4px 16px rgba(0, 0, 0, 0.08)',
+              position: 'relative',
+              animation: 'fadeIn 0.7s ease-out, zoomIn 0.7s ease-out'
+            }}>
+              {/* 边缘高光效果 */}
+              <div 
+                style={{
+                  position: 'absolute',
+                  top: '0',
+                  left: '0',
+                  right: '0',
+                  bottom: '0',
+                  borderRadius: '20px',
+                  background: 'linear-gradient(135deg, rgba(255, 182, 193, 0.3) 0%, rgba(255, 218, 185, 0.3) 50%, rgba(176, 224, 230, 0.3) 100%)',
+                  zIndex: '-1'
+                }}
+              />
+              {/* 顶部边缘高光 */}
+              <div 
+                style={{
+                  position: 'absolute',
+                  top: '-1px',
+                  left: '5%',
+                  right: '5%',
+                  height: '1px',
+                  background: 'linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent)',
+                  borderRadius: '50%'
+                }}
+              />
               <CardHeader>
                 <div className="flex items-center justify-between">
                   <CardTitle className="text-xl md:text-2xl flex items-center gap-2">
@@ -194,7 +262,7 @@ export default function HomePage() {
                   </Button>
                 </div>
               </CardContent>
-            </Card>
+            </div>
             )}
         </div>
 
