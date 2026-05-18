@@ -165,4 +165,80 @@ All colors MUST be HSL.
     mask-composite: exclude;
     z-index: -1;
   }
+
+  /* 个人信息卡片样式 */
+  .personal-info-section {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    position: relative;
+    transition: transform 180ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .personal-info-section::before,
+  .personal-info-section::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.6));
+  }
+
+  .personal-info-section::before {
+    top: 0;
+    border-radius: 20px 20px 0 0;
+  }
+
+  .personal-info-section::after {
+    bottom: 0;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.3));
+    border-radius: 0 0 20px 20px;
+  }
+
+  .personal-info-section:hover {
+    transform: scale(1.03);
+  }
+
+  /* 侧边高光 */
+  .personal-info-section .section-glow-left,
+  .personal-info-section .section-glow-right {
+    content: '';
+    position: absolute;
+    top: 10%;
+    bottom: 10%;
+    width: 1px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.4));
+  }
+
+  .personal-info-section .section-glow-left {
+    left: 0;
+    border-radius: 20px 0 0 20px;
+  }
+
+  .personal-info-section .section-glow-right {
+    right: 0;
+    border-radius: 0 20px 20px 0;
+  }
+
+  /* 卡片样式 */
+  .glass-card {
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+
+  /* 图标徽章 */
+  .icon-badge {
+    background-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
 }

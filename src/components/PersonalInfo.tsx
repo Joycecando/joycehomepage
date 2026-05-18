@@ -10,28 +10,12 @@ interface Section {
 
 export function PersonalInfo() {
   const [expandedSections, setExpandedSections] = useState<Record<string, boolean>>({});
-  const [togglingSections, setTogglingSections] = useState<Record<string, boolean>>({});
 
   const toggleSection = (sectionId: string) => {
-    // 标记正在切换的部分
-    setTogglingSections(prev => ({
-      ...prev,
-      [sectionId]: true
-    }));
-    
-    // 切换展开状态
     setExpandedSections(prev => ({
       ...prev,
       [sectionId]: !prev[sectionId]
     }));
-    
-    // 300ms后清除切换标记
-    setTimeout(() => {
-      setTogglingSections(prev => ({
-        ...prev,
-        [sectionId]: false
-      }));
-    }, 300);
   };
 
   const sections: Section[] = [
@@ -139,84 +123,12 @@ export function PersonalInfo() {
         return (
           <div 
             key={sectionId} 
-            className="opacity-0 intersect:opacity-100 transition-opacity duration-700"
-            style={{ 
-              backgroundColor: 'rgba(255, 255, 255, 0.1)',
-              borderRadius: '20px',
-              overflow: 'hidden',
-              boxShadow: '0 8px 32px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04)',
-              backdropFilter: 'blur(24px)',
-              WebkitBackdropFilter: 'blur(24px)',
-              border: '1px solid rgba(255, 255, 255, 0.4)',
-              position: 'relative',
-              transform: togglingSections[sectionId] ? 'translateY(3px)' : 'translateY(0)',
-              transition: togglingSections[sectionId] ? 'transform 300ms cubic-bezier(0.34, 1.56, 0.64, 1)' : 'transform 180ms cubic-bezier(0.34, 1.56, 0.64, 1)'
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.transform = 'scale(1.03)';
-              e.currentTarget.style.transition = 'transform 180ms cubic-bezier(0.34, 1.56, 0.64, 1)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.transform = 'scale(1)';
-              e.currentTarget.style.transition = 'transform 180ms cubic-bezier(0.34, 1.56, 0.64, 1)';
-            }}
+            className="personal-info-section opacity-0 intersect:opacity-100 transition-opacity duration-700"
           >
-            {/* 顶部边缘高光 */}
-            <div 
-              style={{
-                position: 'absolute',
-                top: '0',
-                left: '0',
-                right: '0',
-                height: '1px',
-                background: 'linear-gradient(90deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.6))',
-                borderRadius: '20px 20px 0 0'
-              }}
-            />
-            {/* 底部边缘高光 */}
-            <div 
-              style={{
-                position: 'absolute',
-                bottom: '0',
-                left: '0',
-                right: '0',
-                height: '1px',
-                background: 'linear-gradient(90deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.3))',
-                borderRadius: '0 0 20px 20px'
-              }}
-            />
-            {/* 左侧边缘高光 */}
-            <div 
-              style={{
-                position: 'absolute',
-                top: '10%',
-                bottom: '10%',
-                left: '0',
-                width: '1px',
-                background: 'linear-gradient(180deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.4))',
-                borderRadius: '20px 0 0 20px'
-              }}
-            />
-            {/* 右侧边缘高光 */}
-            <div 
-              style={{
-                position: 'absolute',
-                top: '10%',
-                bottom: '10%',
-                right: '0',
-                width: '1px',
-                background: 'linear-gradient(180deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.4))',
-                borderRadius: '0 20px 20px 0'
-              }}
-            />
-            
             {/* 一级标题 */}
             <div 
-              className="p-5 cursor-pointer hover:opacity-90 transition-opacity"
+              className={`p-5 cursor-pointer hover:opacity-90 transition-opacity ${isExpanded ? 'border-b border-white/20' : ''}`}
               onClick={() => toggleSection(sectionId)}
-              style={{ 
-                borderBottom: isExpanded ? '1px solid rgba(255, 255, 255, 0.2)' : 'none'
-              }}
             >
               <h2 className="text-xl font-bold text-gray-800">
                 {section.title}
